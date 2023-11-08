@@ -7,7 +7,7 @@ on:
 
 jobs:
   create-task:
-    name: Create task on ClickUp
+    name: Create Issue task on ClickUp
     runs-on: ubuntu-latest
     run: |
       DATA='{"name":"Issue #${{ github.event.issue.issue_number }}: ${{ github.event.issue.title }}","description": "${{ github.event.issue.body }}"}'
