@@ -1,0 +1,17 @@
+name: Create Issue task on ClickUp
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  create-task:
+    name: Create task on ClickUp
+    runs-on: ubuntu-latest
+    run: |
+      DATA='{"name":"Issue #${{ github.event.issue.issue_number }}: ${{ github.event.issue.title }}","description": "${{ github.event.issue.body }}"}'
+      curl --location --request POST "https://api.clickup.com/api/v2/list/${{ secrets.CLICKUP_LIST_ID }}/task?custom_task_ids=true&team_id=30938269" \
+        --header "Authorization: ${{ secrets.CLICKUP_TOKEN }}" \
+        --header "Content-Type: application/json" \
+        --data "$DATA"
