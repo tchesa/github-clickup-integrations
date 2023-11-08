@@ -1,7 +1,7 @@
 name: Create Issue task on ClickUp
 
 on:
-  issues:
+  issue:
     types:
       - opened
 
