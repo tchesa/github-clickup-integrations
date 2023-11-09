@@ -28,3 +28,4 @@ jobs:
             --header "Authorization: ${{ secrets.CLICKUP_TOKEN }}" \
             --header "Content-Type: application/json" \
             --data "$DATA"
+            --fail
