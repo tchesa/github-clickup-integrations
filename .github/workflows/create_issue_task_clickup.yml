@@ -33,11 +33,12 @@ jobs:
         run: |
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
       - name: Grep product name
-        run: |
-          PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
-      - name: Show product name
-        run: |
-          echo $PRODUCT_NAME
+        run: echo $PRODUCT
+      #   run: |
+      #     PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
+      # - name: Show product name
+      #   run: |
+      #     echo $PRODUCT_NAME
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v3
