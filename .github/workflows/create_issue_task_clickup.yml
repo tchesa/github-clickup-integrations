@@ -30,10 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create product
+        id: create_product
         run: |
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
       - name: Grep product name
-        run: echo ${{ steps.vars.outputs.PRODUCT }}
+        run: echo ${{ steps.create_product.outputs.PRODUCT }}
       #   run: |
       #     PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
       # - name: Show product name
