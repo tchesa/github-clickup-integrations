@@ -17,15 +17,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Get issue number
+        run: echo ${{ github.event.issue.number }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Create task on ClickUp
-        run: |
-          DATA='{"name":"Issue #${{ github.event.issue.number }}: ${{ github.event.issue.title }}","description": "${{ github.event.issue.body }}"}'
-          curl --location --request POST "https://api.clickup.com/api/v2/list/${{ secrets.CLICKUP_LIST_ID }}/task" \
-            --header "Authorization: ${{ secrets.CLICKUP_TOKEN }}" \
-            --header "Content-Type: application/json" \
-            --data "$DATA"
-            --fail
+      # # Runs a single command using the runners shell
+      # - name: Create task on ClickUp
+      #   run: |
+      #     DATA='{"name":"Issue #${{ github.event.issue.number }}: ${{ github.event.issue.title }}","description": "${{ github.event.issue.body }}"}'
+      #     curl --location --request POST "https://api.clickup.com/api/v2/list/${{ secrets.CLICKUP_LIST_ID }}/task" \
+      #       --header "Authorization: ${{ secrets.CLICKUP_TOKEN }}" \
+      #       --header "Content-Type: application/json" \
+      #       --data "$DATA"
+      #       --fail
