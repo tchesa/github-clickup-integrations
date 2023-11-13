@@ -33,7 +33,7 @@ jobs:
         id: create
         run: |
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
-          echo $PRODUCT
+          echo "PRODUCT=$PRODUCT" >> "$GITHUB_OUTPUT"
       - name: Grep product
         run: |
           curl --location --request GET "https://dummyjson.com/products/${{ steps.create.outputs.PRODUCT }}" --header "Content-Type: application/json"
