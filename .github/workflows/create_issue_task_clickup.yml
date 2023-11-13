@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Create product
         run: |
-          PRODUCT=$(curl --request POST "https://dummyjson.com/products/add" \
+          PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" \
           --header "Content-Type: application/json" \                                        
           --data '{"title": "Test product"}')
 
