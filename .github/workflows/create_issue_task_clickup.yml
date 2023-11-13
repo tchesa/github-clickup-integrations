@@ -33,8 +33,9 @@ jobs:
         id: create
         run: |
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
-      - name: Grep product name
-        run: echo ${{ steps.create.outputs.PRODUCT }}
+      - name: Grep product
+        run: |
+          curl --location --request GET "https://dummyjson.com/products/${{ steps.create.outputs.PRODUCT }}" --header "Content-Type: application/json"
       #   run: |
       #     PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
       # - name: Show product name
