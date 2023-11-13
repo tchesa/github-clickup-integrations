@@ -36,7 +36,8 @@ jobs:
           echo "PRODUCT=$PRODUCT" >> "$GITHUB_OUTPUT"
       - name: Grep product
         run: |
-          curl --location --request GET "https://dummyjson.com/products/${{ steps.create.outputs.PRODUCT }}" --header "Content-Type: application/json"
+          PRODUCT_NAME=$(echo ${{ steps.create.outputs.PRODUCT }} | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
+          echo $PRODUCT_NAME
       #   run: |
       #     PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
       # - name: Show product name
