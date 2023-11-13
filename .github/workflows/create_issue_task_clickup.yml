@@ -19,6 +19,11 @@ jobs:
     steps:
       - name: Get issue number
         run: echo ${{ github.event.issue.number }}
+      - name: Get issue title
+        run: echo ${{ github.event.issue.title }}
+      - name: Get issue body
+        run: echo ${{ github.event.issue.body }}
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v3
 
