@@ -31,8 +31,7 @@ jobs:
     steps:
       - name: Create product
         run: |
-          DATA='{"title": "Test product"}'
-          PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data $DATA)
+          PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
 
   get-product:
     runs-on: ubuntu-latest
