@@ -32,11 +32,6 @@ jobs:
       - name: Create product
         run: |
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" --header "Content-Type: application/json" --data '{"title": "Test product"}')
-
-  get-product:
-    runs-on: ubuntu-latest
-    needs: create-product
-    steps:
       - name: Grep product name
         run: |
           PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
