@@ -33,7 +33,7 @@ jobs:
         run: |
           DATA='{"title": "Test product"}'
           PRODUCT=$(curl --location --request POST "https://dummyjson.com/products/add" \
-          --header "Content-Type: application/json" \                                        
+          --header "Content-Type: application/json" \
           --data $DATA)
 
   get-product:
