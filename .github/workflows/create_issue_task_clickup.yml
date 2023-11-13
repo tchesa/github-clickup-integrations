@@ -36,7 +36,7 @@ jobs:
           echo "PRODUCT=$PRODUCT" >> "$GITHUB_OUTPUT"
       - name: Grep product
         run: |
-          PRODUCT_NAME=$(echo ${{ steps.create.outputs.PRODUCT }} | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
+          PRODUCT_NAME=$(echo '${{ steps.create.outputs.PRODUCT }}' | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
           echo $PRODUCT_NAME
       #   run: |
       #     PRODUCT_NAME=$(echo $PRODUCT | grep -o '"title": *"[^"]*"' | grep -o '"[^"]*"$')
