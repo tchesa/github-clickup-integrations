@@ -17,6 +17,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Get issue event fields
+        run: echo ${{ github.event.issue }}
       - name: Get issue number
         run: echo ${{ github.event.issue.number }}
       - name: Get issue title
